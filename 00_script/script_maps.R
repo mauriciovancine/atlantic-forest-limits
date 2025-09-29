@@ -83,7 +83,7 @@ atlantic_forest_limits
 # map
 for(i in seq_len(nrow(atlantic_forest_limits))){
   
-    tm_shape(atlantic_forest_limits[i, ], bbox = atlantic_forest_limits[12, ]) +
+    map <- tm_shape(atlantic_forest_limits[i, ], bbox = atlantic_forest_limits[12, ]) +
     tm_fill(fill = "gray50") +
     tm_shape(sa) +
     tm_borders(col = "gray") +
@@ -91,5 +91,9 @@ for(i in seq_len(nrow(atlantic_forest_limits))){
     tm_borders() +
     tm_credits(letters[i], position = c("right", "top"), size = 2, fontface = "bold")
 
+    tmap::tmap_save(tm = map, width = 20, height = 25, units = "cm", dpi = 300,
+                    filename = paste0("/home/mude/data/googledrive/01_manuscritos/articles/02_atlanticr/figures/fig01", letters[i], ".png"))
+    
   }
 
+# end ---------------------------------------------------------------------
